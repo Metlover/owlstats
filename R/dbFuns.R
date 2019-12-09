@@ -21,6 +21,7 @@ buildOWDB = function(connection){
   teams = getTeams()
   cat('Scraping players...\n')
   players = getPlayers()
+  players$player.active = ifelse(players$player.active, 'TRUE','FALSE') #Convert to string because dbwritetable doesn't handle bool well
   cat('Scraping maps...\n')
   maps = getMaps()
   cat('Scraping schedule - be patient, this may take a minute...\n')
@@ -81,6 +82,7 @@ updateOWDB = function(connection){
   teams = getTeams()
   cat('Scraping players...\n')
   players = getPlayers()
+  players$player.active = ifelse(players$player.active, 'TRUE','FALSE') #Convert to string because dbwritetable doesn't handle bool well
   cat('Scraping maps...\n')
   maps = getMaps()
   cat('Scraping schedule - be patient, this may take a minute...\n')
