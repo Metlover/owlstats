@@ -1,0 +1,18 @@
+Package: owlstats
+Title: OWL API Wrapper and other OW Analytics functions
+Version: 0.1
+Authors@R: 
+    person(given = "John",
+           family = "Edwards",
+           role = c("aut", "cre"),
+           email = "edwards1860@gmail.com",
+           comment = c(ORCID = "0000-0002-8533-7504"))
+Description: This package contains a series of functions for obtaining OWL API data in R and manipulating it. The Overwatch League is a professional esports league that began play in 2018. Statistics from the league are stored on the OWL website. This package allows users to easily access OWL data and manipulate it using the tools contained here.
+License: MIT License
+Encoding: UTF-8
+LazyData: true
+Imports: 
+  dplyr,
+  jsonlite,
+  tidyr
+RoxygenNote: 7.0.2.9000
