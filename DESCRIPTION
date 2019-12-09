@@ -1,6 +1,6 @@
 Package: owlstats
 Title: OWL API Wrapper and other OW Analytics functions
-Version: 0.1
+Version: 0.1.1
 Authors@R: 
     person(given = "John",
            family = "Edwards",
