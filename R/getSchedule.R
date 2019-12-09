@@ -7,12 +7,12 @@
 #' @param team If specified, returns the schedule for a given team, such as "NYE" or "SFS". If unspecified, returns the schedule for all teams in that time frame.
 #' @keywords scraping
 #' @return A dataframe containing the schedule, match.ids, and results for the seasons and teams specified.
-#' @import dplyr
 #' @export
 #' @examples
 #' getSchedule(2018,2018)
 #' getSchedule(2018,2019,team="NYE")
 getSchedule = function(startYear, endYear, team="All"){
+  `%>%` <- magrittr::`%>%`
   mainschedule = data.frame()
   for(year in c(startYear:endYear)){
     schedule = jsonlite::fromJSON(paste('https://api.overwatchleague.com/schedule?expand=team.content&locale=en_US&season=',year,sep=''))
@@ -56,6 +56,6 @@ getSchedule = function(startYear, endYear, team="All"){
   }
   else{
     return(as.data.frame(mainschedule %>%
-             filter(match.teama.abbrev == team | match.teamb.abbrev == team)))
+             dplyr::filter(match.teama.abbrev == team | match.teamb.abbrev == team)))
   }
 }
