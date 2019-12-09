@@ -10,7 +10,7 @@
 getPlayers = function(include_inactive=TRUE){
   active_players = jsonlite::fromJSON('https://api.overwatchleague.com/players',flatten = TRUE)
   active_players = active_players[["content"]]
-  active_players = unnest(active_players,teams)
+  active_players = tidyr::unnest(active_players,teams)
   active_players = active_players[,c('id','name','homeLocation','familyName','givenName','nationality','team.id','team.abbreviatedName','attributes.player_number','attributes.role')]
   names(active_players) = c('player.id','player.name','player.home','player.familyName','player.givenName','player.nationality','team.id','team.abbrev','player.number','player.role')
   active_players$player.active = TRUE

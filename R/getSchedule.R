@@ -56,6 +56,6 @@ getSchedule = function(startYear, endYear, team="All"){
   }
   else{
     return(as.data.frame(mainschedule %>%
-             dplyr::filter(match.teama.abbrev == team | match.teamb.abbrev == team)))
+                           dplyr::filter(match.teama.abbrev == team | match.teamb.abbrev == team)))
   }
 }
