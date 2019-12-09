@@ -81,9 +81,7 @@ getMatchResults = function(match.ids){
       df$match.map8.teamb.score = ifelse(length(game[["games"]][["points"]])>=8,ifelse(game[["state"]] == 'CONCLUDED', game[["games"]][["attributes.mapScore.team2"]][8],NA),NA)
       df$match.map8.type = maps$type[maps$map.slug == df$map_8_name][1]
       match_results = rbind(match_results,df)
-    },error=function(e){
-      print(e)
-    })
+    },error=function(e){})
     i = which(match.ids == match.id)
     setTxtProgressBar(pb, i)
   }
