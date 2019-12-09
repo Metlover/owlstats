@@ -16,7 +16,7 @@ There are also two automated functions that put scraped values into SQL database
 
 `buildOWDB` creates a database and populates it with the data available in the scraper function. It currently takes about 30-45 minutes to run.
 
-`updateOWDB` updates a database already created with `updateOWDB` by populating the `heroVals` and `matchResults` tables with values not already included in the database.
+`updateOWDB` updates a database already created with `buildOWDB` by populating the `heroVals` and `matchResults` tables with values not already included in the database.
 
 ## Examples
 
