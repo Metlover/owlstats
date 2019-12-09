@@ -1,5 +1,5 @@
 # owlstats
-OWL API Wrapper and associated tools
+R Package. OWL API Wrapper and associated tools.
 
 ## Installation
 
