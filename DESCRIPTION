@@ -15,5 +15,6 @@ Imports:
   dplyr,
   jsonlite,
   tidyr,
-  magrittr
+  magrittr,
+  DBI
 RoxygenNote: 7.0.2.9000
