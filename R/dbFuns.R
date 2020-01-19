@@ -12,10 +12,10 @@
 #' buildOWDB(mydb)
 buildOWDB = function(connection){
   if(lubridate::month(Sys.Date()) <= 1){
-    seasons = c(2018:lubridate::year(Sys.Date())-1)
+    seasons = c(2018:2019)
   }
   else{
-    seasons = c(2018:lubridate::year(Sys.Date()))
+    seasons = c(2018:2019)
   }
   cat('Scraping teams...\n')
   teams = getTeams()
@@ -67,16 +67,16 @@ buildOWDB = function(connection){
 #' updateOWDB(mydb)
 updateOWDB = function(connection){
   if(lubridate::month(Sys.Date()) <= 1){
-    seasons = c(2018:lubridate::year(Sys.Date())-1)
+    seasons = c(2018:2019)
   }
   else{
-    seasons = c(2018:lubridate::year(Sys.Date()))
+    seasons = c(2018:2019)
   }
   if(lubridate::month(Sys.Date()) <= 1){
-    seasons = c(2018:lubridate::year(Sys.Date())-1)
+    seasons = c(2018:2019)
   }
   else{
-    seasons = c(2018:lubridate::year(Sys.Date()))
+    seasons = c(2018:2019)
   }
   cat('Scraping teams...\n')
   teams = getTeams()
