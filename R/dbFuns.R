@@ -11,12 +11,7 @@
 #' mydb = dbConnect(MySQL(), user='user', password='password', dbname='owl', host='host')
 #' buildOWDB(mydb)
 buildOWDB = function(connection){
-  if(lubridate::month(Sys.Date()) <= 1){
-    seasons = c(2018:2019)
-  }
-  else{
-    seasons = c(2018:2019)
-  }
+  seasons = c(2018:2019)
   cat('Scraping teams...\n')
   teams = getTeams()
   cat('Scraping players...\n')
@@ -66,18 +61,7 @@ buildOWDB = function(connection){
 #' mydb = dbConnect(MySQL(), user='user', password='password', dbname='owl', host='host')
 #' updateOWDB(mydb)
 updateOWDB = function(connection){
-  if(lubridate::month(Sys.Date()) <= 1){
-    seasons = c(2018:2019)
-  }
-  else{
-    seasons = c(2018:2019)
-  }
-  if(lubridate::month(Sys.Date()) <= 1){
-    seasons = c(2018:2019)
-  }
-  else{
-    seasons = c(2018:2019)
-  }
+  seasons = c(2018:2019)
   cat('Scraping teams...\n')
   teams = getTeams()
   cat('Scraping players...\n')
