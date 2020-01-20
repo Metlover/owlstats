@@ -98,7 +98,11 @@ updateOWDB = function(connection){
   DBI::dbWriteTable(connection, 'maps', maps, row.names=FALSE, overwrite=TRUE)
   DBI::dbWriteTable(connection, 'schedule', schedule, row.names=FALSE, overwrite=TRUE)
   DBI::dbWriteTable(connection, 'playerstats', playerStats, row.names=FALSE, overwrite=TRUE)
+  tryCatch({
   DBI::dbWriteTable(connection, 'matchresults', matchResults, row.names=FALSE, append=TRUE)
+    },error=function(e))
+  tryCatch({
   DBI::dbWriteTable(connection, 'herovals', heroVals, row.names=FALSE, append=TRUE)
+    },error=function(e))
   gc()
 }
