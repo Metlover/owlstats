@@ -100,9 +100,9 @@ updateOWDB = function(connection){
   DBI::dbWriteTable(connection, 'playerstats', playerStats, row.names=FALSE, overwrite=TRUE)
   tryCatch({
   DBI::dbWriteTable(connection, 'matchresults', matchResults, row.names=FALSE, append=TRUE)
-    },error=function(e))
+    },error=function(e){})
   tryCatch({
   DBI::dbWriteTable(connection, 'herovals', heroVals, row.names=FALSE, append=TRUE)
-    },error=function(e))
+    },error=function(e){})
   gc()
 }
