@@ -16,9 +16,9 @@ getPlayers = function(include_inactive=TRUE){
   active_players$player.active = TRUE
   if(include_inactive){
     data("inactive_players", envir=environment())
-    return(rbind(active_players,inactive_players))
+    return(as.data.frame(rbind(active_players,inactive_players)))
   }
   else{
-    return(active_players)
+    return(as.data.frame(active_players))
   }
 }
