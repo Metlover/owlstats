@@ -81,7 +81,7 @@ updateOWDB = function(connection){
     playerStats = rbind(playerStats,playerStats.regSeason)
     playerStats = rbind(playerStats,playerStats.postSeason)
   }
-  origmatchids = DBI::dbGetQuery(connection, "SELECT distinct(match.id) from schedule")
+  origmatchids = DBI::dbGetQuery(connection, "SELECT distinct(`match.id`) from schedule")
   unscrapedmatchids = schedule$match.id[!(schedule$match.id %in% origmatchids)]
   cat('Scraping match results — be patient, this may take a minute...\n')
   matchResults = getMatchResults(unscrapedmatchids)
