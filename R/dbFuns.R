@@ -41,9 +41,9 @@ buildOWDB = function(connection){
   DBI::dbWriteTable(connection, 'players', players, row.names=FALSE, overwrite=TRUE)
   DBI::dbWriteTable(connection, 'maps', maps, row.names=FALSE, overwrite=TRUE)
   DBI::dbWriteTable(connection, 'schedule', schedule, row.names=FALSE, overwrite=TRUE)
-  DBI::dbWriteTable(connection, 'playerStats', playerStats, row.names=FALSE, overwrite=TRUE)
-  DBI::dbWriteTable(connection, 'matchResults', matchResults, row.names=FALSE, overwrite=TRUE)
-  DBI::dbWriteTable(connection, 'heroVals', heroVals, row.names=FALSE, overwrite=TRUE)
+  DBI::dbWriteTable(connection, 'playerstats', playerStats, row.names=FALSE, overwrite=TRUE)
+  DBI::dbWriteTable(connection, 'matchresults', matchResults, row.names=FALSE, overwrite=TRUE)
+  DBI::dbWriteTable(connection, 'herovals', heroVals, row.names=FALSE, overwrite=TRUE)
   gc()
 }
 
@@ -97,8 +97,8 @@ updateOWDB = function(connection){
   DBI::dbWriteTable(connection, 'players', players, row.names=FALSE, overwrite=TRUE)
   DBI::dbWriteTable(connection, 'maps', maps, row.names=FALSE, overwrite=TRUE)
   DBI::dbWriteTable(connection, 'schedule', schedule, row.names=FALSE, overwrite=TRUE)
-  DBI::dbWriteTable(connection, 'playerStats', playerStats, row.names=FALSE, overwrite=TRUE)
-  DBI::dbWriteTable(connection, 'matchResults', matchResults, row.names=FALSE, append=TRUE)
-  DBI::dbWriteTable(connection, 'heroVals', heroVals, row.names=FALSE, append=TRUE)
+  DBI::dbWriteTable(connection, 'playerstats', playerStats, row.names=FALSE, overwrite=TRUE)
+  DBI::dbWriteTable(connection, 'matchresults', matchResults, row.names=FALSE, append=TRUE)
+  DBI::dbWriteTable(connection, 'herovals', heroVals, row.names=FALSE, append=TRUE)
   gc()
 }
