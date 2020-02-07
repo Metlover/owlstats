@@ -17,7 +17,6 @@ Originally written as a scraping package, the advent of bulk csv downloads of mo
 
 ```
 #Fetch statistics for San Francisco Shock players by map
-library(owlstats)
 hero_vals = owlstats::hero_vals[hero_vals$team_id == 4404,]
 
 #Create a MySQL database with OWL API Stats
