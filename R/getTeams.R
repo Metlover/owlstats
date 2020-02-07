@@ -16,7 +16,7 @@ getTeams = function(){
                     "competitor.addressCountry",
                     "competitor.owl_division",
                     "competitor.attributes.team_guid")]
-  names(teams) = c("team.id","team.name","team.location","team.abbrev","team.country","team.division","team.guid")
-  teams$team.division = ifelse(teams$team.division == 79,"Atlantic","Pacific")
+  names(teams) = c("team_id","team_name","team_location","team_abbrev","team_country","team_division","team_guid")
+  teams$team_division = ifelse(teams$team_division == 79,"Atlantic","Pacific")
   return(teams)
 }

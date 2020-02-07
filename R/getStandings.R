@@ -24,7 +24,7 @@ getStandings = function(season,stage.no=NA){
                             'league.gameLoss',
                             'league.gameTie',
                             'league.placement')]
-    names(standings) = c('team.id','team.division','team.abbrev','team.match.wins','team.match.losses','team.match.draws','team.game.wins','team.game.losses','team.game.ties','team.placement')
+    names(standings) = c('team_id','team_division','team_abbrev','team_match_wins','team_match_losses','team_match_draws','team_game_wins','team_game_losses','team_game_ties','team_placement')
   }
   else{
     standings = standings[,c('id',
@@ -37,9 +37,9 @@ getStandings = function(season,stage.no=NA){
                              paste('stages.stage',stage.no,'.gameLoss',sep=''),
                              paste('stages.stage',stage.no,'.gameTie',sep=''),
                              paste('stages.stage',stage.no,'.placement',sep=''))]
-    names(standings) = c('team.id','team.division','team.abbrev','team.match.wins','team.match.losses','team.match.draws','team.game.wins','team.game.losses','team.game.ties','team.placement')
+    names(standings) = c('team_id','team_division','team_abbrev','team_match_wins','team_match_losses','team_match_draws','team_game_wins','team_game_losses','team_game_ties','team_placement')
   }
-  standings$team.division = ifelse(standings$team.division == 79,"Atlantic","Pacific")
-  standings = standings[order(standings$team.placement),]
+  standings$team_division = ifelse(standings$team_division == 79,"Atlantic","Pacific")
+  standings = standings[order(standings$team_placement),]
   return(standings)
 }
