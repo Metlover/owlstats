@@ -1,5 +1,5 @@
 # owlstats
-R Package. OWL API Wrapper and associated tools.
+R Package. Originally an OWL API Wrapper, but that functionality has been scrapped in order to allow access to more advanced statistics through the OWL Statslab.
 
 ## Installation
 
@@ -10,22 +10,15 @@ devtools::install_github('Metlover/owlstats')
 ```
 
 ## Use
-Currently, the `owlstats` package is designed to be used for scraping. Much of the scraping uses match ids, which can be obtained and used to scrape using the `getSchedule` function. You can also obtain these IDs manually through the [Overwatch League website](https://overwatchleague.com/en-us/schedule).
 
-There are also two automated functions that put scraped values into SQL databases:
-
-`buildOWDB` creates a database and populates it with the data available in the scraper function. It currently takes about 30-45 minutes to run.
-
-`updateOWDB` updates a database already created with `buildOWDB` by populating the `heroVals` and `matchResults` tables with values not already included in the database.
+Originally written as a scraping package, the advent of bulk csv downloads of more advanced data through the OWL Statslab allowed a faster workload and functionality with better data. For this purpose, I have downloaded and updated previous season's Statslab datasets.
 
 ## Examples
 
 ```
 #Fetch statistics for San Francisco Shock players by map
 library(owlstats)
-schedule = getSchedule(2018,2019,team='SFS')
-vals = getHeroVals(schedule$match.id)
-vals = vals[vals$team == 4404,]
+hero_vals = owlstats::hero_vals[hero_vals$team_id == 4404,]
 
 #Create a MySQL database with OWL API Stats
 library(RMySQL)
