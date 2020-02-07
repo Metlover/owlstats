@@ -41,9 +41,9 @@ buildOWDB = function(connection){
   DBI::dbWriteTable(connection, 'players', players, row.names=FALSE, overwrite=TRUE)
   DBI::dbWriteTable(connection, 'maps', maps, row.names=FALSE, overwrite=TRUE)
   DBI::dbWriteTable(connection, 'schedule', schedule, row.names=FALSE, overwrite=TRUE)
-  DBI::dbWriteTable(connection, 'playerStats', playerStats, row.names=FALSE, overwrite=TRUE)
-  DBI::dbWriteTable(connection, 'matchResults', matchResults, row.names=FALSE, overwrite=TRUE)
-  DBI::dbWriteTable(connection, 'heroVals', heroVals, row.names=FALSE, overwrite=TRUE)
+  DBI::dbWriteTable(connection, 'playerstats', playerStats, row.names=FALSE, overwrite=TRUE)
+  DBI::dbWriteTable(connection, 'matchresults', matchResults, row.names=FALSE, overwrite=TRUE)
+  DBI::dbWriteTable(connection, 'herovals', heroVals, row.names=FALSE, overwrite=TRUE)
   gc()
 }
 
@@ -81,20 +81,28 @@ updateOWDB = function(connection){
     playerStats = rbind(playerStats,playerStats.regSeason)
     playerStats = rbind(playerStats,playerStats.postSeason)
   }
-  origmatchids = DBI::dbGetQuery(connection, "SELECT distinct(match.id) from schedule")
-  unscrapedmatchids = schedule$match.id[!(schedule$match.id %in% origmatchids)]
+  origmatchids = DBI::dbGetQuery(connection, "SELECT distinct(`match.id`) from schedule")
+  unscrapedmatchids = schedule$match.id[!(schedule$match.id %in% origmatchids$match.id)]
   cat('Scraping match results — be patient, this may take a minute...\n')
-  matchResults = getMatchResults(unscrapedmatchids)
-  cat('Scraping hero values — this will take a while...\n')
+  tryCatch({
+    matchResults = getMatchResults(unscrapedmatchids)
+    },error=function(e){})
+  cat('Scraping hero values — this may take a while...\n')
+  tryCatch({
   heroVals = getHeroVals(unscrapedmatchids)
+    },error=function(e){})
   
   cat('Uploading these files to your database...\n')
   DBI::dbWriteTable(connection, 'teams', teams, row.names=FALSE, overwrite=TRUE)
   DBI::dbWriteTable(connection, 'players', players, row.names=FALSE, overwrite=TRUE)
   DBI::dbWriteTable(connection, 'maps', maps, row.names=FALSE, overwrite=TRUE)
   DBI::dbWriteTable(connection, 'schedule', schedule, row.names=FALSE, overwrite=TRUE)
-  DBI::dbWriteTable(connection, 'playerStats', playerStats, row.names=FALSE, overwrite=TRUE)
-  DBI::dbWriteTable(connection, 'matchResults', matchResults, row.names=FALSE, append=TRUE)
-  DBI::dbWriteTable(connection, 'heroVals', heroVals, row.names=FALSE, append=TRUE)
+  DBI::dbWriteTable(connection, 'playerstats', playerStats, row.names=FALSE, overwrite=TRUE)
+  tryCatch({
+  DBI::dbWriteTable(connection, 'matchresults', matchResults, row.names=FALSE, append=TRUE)
+    },error=function(e){})
+  tryCatch({
+  DBI::dbWriteTable(connection, 'herovals', heroVals, row.names=FALSE, append=TRUE)
+    },error=function(e){})
   gc()
 }
