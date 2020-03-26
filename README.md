@@ -9,6 +9,8 @@ Use `devtools` to get the latest version.
 devtools::install_github('Metlover/owlstats')
 ```
 
+Please update weekly during the season to get the latest values and match results. These are manual uploads and I try to process them Tuesday nights after homestands.
+
 ## Use
 
 Originally written as a scraping package, the advent of bulk csv downloads of more advanced data through the OWL Statslab allowed a faster workload and functionality with better data. For this purpose, I have downloaded and updated previous season's Statslab datasets.
